@@ -1,0 +1,26 @@
+server:
+  port: 8090
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: servlet
+
+  # (????) security ??? ?? ??
+  security:
+    user:
+      name: user
+      password: test1234
+
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/hatimo
+#    username: hatimo
+#    password: password123
+#    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
