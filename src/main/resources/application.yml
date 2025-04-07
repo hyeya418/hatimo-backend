@@ -6,21 +6,22 @@ spring:
     allow-bean-definition-overriding: true
     web-application-type: servlet
 
-  # (????) security ??? ?? ??
   security:
     user:
       name: user
       password: test1234
 
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/hatimo
-#    username: hatimo
-#    password: password123
-#    driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: hatimo123!@#
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-
+kakao:
+  rest-api-key: 93a09708c04536411c7185192f781d4d
+  redirect-uri: http://localhost:8090/auth/kakao/callback
