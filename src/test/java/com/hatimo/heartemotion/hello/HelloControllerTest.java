@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = HelloController.class)
@@ -26,6 +27,35 @@ class HelloControllerTest {
                 .andExpect(jsonPath("$.code").value("SUCCESS"))
                 .andExpect(jsonPath("$.message").value("요청이 성공적으로 처리되었습니다."))
                 .andExpect(jsonPath("$.data[0]").value("Hello, Hatimo!"));
+    }
+
+    @Test
+    void 에러가_발생하면_정해진_에러형식으로_응답된다() throws Exception {
+        mockMvc.perform(get("/api/v1/hello/error"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("USER_NOT_FOUND"))
+                .andExpect(jsonPath("$.message").value("사용자를 찾을 수 없습니다."))
+                .andExpect(jsonPath("$.data").isArray())
+                .andExpect(jsonPath("$.data").isEmpty());
+    }
+
+    @Test
+    void 유효성_검증에_실패하면_정해진_에러형식으로_응답된다() throws Exception {
+        String requestBody = """
+                    {
+                        "email": "invalid-email",
+                        "password": ""
+                    }
+                """;
+
+        mockMvc.perform(post("/api/v1/hello/validate")
+                        .contentType("application/json")
+                        .content(requestBody))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"))
+                .andExpect(jsonPath("$.message").value("입력값이 유효하지 않습니다."))
+                .andExpect(jsonPath("$.data").isArray())
+                .andExpect(jsonPath("$.data").isEmpty());
     }
 
 }

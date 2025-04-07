@@ -6,6 +6,10 @@ spring:
     allow-bean-definition-overriding: true
     web-application-type: servlet
 
+  web:
+    resources:
+      add-mappings: false
+
   security:
     user:
       name: user
