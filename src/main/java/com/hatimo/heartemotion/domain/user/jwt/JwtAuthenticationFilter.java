@@ -1,7 +1,7 @@
-package com.hatimo.heartemotion.jwt;
+package com.hatimo.heartemotion.domain.user.jwt;
 
-import com.hatimo.heartemotion.model.User;
-import com.hatimo.heartemotion.repository.UserRepository;
+import com.hatimo.heartemotion.domain.user.model.User;
+import com.hatimo.heartemotion.domain.user.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -17,7 +17,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Arrays;
 
-@Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 

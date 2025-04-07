@@ -1,9 +1,9 @@
-package com.hatimo.heartemotion.service;
+package com.hatimo.heartemotion.domain.user.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hatimo.heartemotion.model.User;
-import com.hatimo.heartemotion.repository.UserRepository;
+import com.hatimo.heartemotion.domain.user.model.User;
+import com.hatimo.heartemotion.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

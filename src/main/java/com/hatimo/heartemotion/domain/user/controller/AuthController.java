@@ -1,8 +1,8 @@
-package com.hatimo.heartemotion.controller;
+package com.hatimo.heartemotion.domain.user.controller;
 
-import com.hatimo.heartemotion.jwt.JwtProvider;
-import com.hatimo.heartemotion.model.User;
-import com.hatimo.heartemotion.service.KakaoLoginService;
+import com.hatimo.heartemotion.domain.user.jwt.JwtProvider;
+import com.hatimo.heartemotion.domain.user.model.User;
+import com.hatimo.heartemotion.domain.user.service.KakaoLoginService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

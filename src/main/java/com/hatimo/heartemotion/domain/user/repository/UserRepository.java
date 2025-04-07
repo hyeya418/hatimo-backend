@@ -1,6 +1,6 @@
-package com.hatimo.heartemotion.repository;
+package com.hatimo.heartemotion.domain.user.repository;
 
-import com.hatimo.heartemotion.model.User;
+import com.hatimo.heartemotion.domain.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

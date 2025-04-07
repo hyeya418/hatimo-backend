@@ -1,4 +1,4 @@
-package com.hatimo.heartemotion.model;
+package com.hatimo.heartemotion.domain.user.model;
 
 import jakarta.persistence.*;
 import lombok.*;

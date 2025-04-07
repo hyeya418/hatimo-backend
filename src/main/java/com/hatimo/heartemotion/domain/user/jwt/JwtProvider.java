@@ -1,4 +1,4 @@
-package com.hatimo.heartemotion.jwt;
+package com.hatimo.heartemotion.domain.user.jwt;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
