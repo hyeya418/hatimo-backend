@@ -22,8 +22,10 @@
 ## 🧱 주요 기능 (예정 포함)
 
 - [x] `/hello` Hello World 테스트
-- [ ] 감정 기록 API (`/api/emotions`)
-- [ ] GPT 기반 감정 위로 메시지 제공
+- [ ] 카카오 로그인 연동, Spring Security, JWT
+- [ ] TDD 적용
+- [ ] 감정 기록 API
+- [ ] GPT 기반 감정 위로 메시지 제공 API
 - [ ] 감정 히스토리 조회
 - [ ] 푸시 알림 연동 (FCM or Expo)
-- [ ] 회원 인증 / 마이페이지 기능
+- [ ] 마이페이지 기능
