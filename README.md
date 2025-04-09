@@ -14,7 +14,7 @@
 | 개발 언어        | Java 17                         |
 | 프레임워크       | Spring Boot 3.4.4              |
 | 빌드 도구        | Gradle                          |
-| 데이터베이스     | PostgreSQL                      |
+| 데이터베이스     | PostgreSQL 17.4                  |
 | API 연동         | OpenAI GPT (gpt-3.5-turbo 예정) |
 
 ---
