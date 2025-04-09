@@ -22,7 +22,6 @@ public class User {
     private Long kakaoId;
 
     private String nickname;
-    private String email;
 
     @Column(name = "profile_img")
     private String profileImg;

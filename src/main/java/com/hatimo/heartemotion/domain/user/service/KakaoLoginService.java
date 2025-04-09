@@ -38,16 +38,9 @@ public class KakaoLoginService {
 
         System.out.println("[Kakao 사용자 정보 응답]");
         System.out.println(kakaoUser.toPrettyString());
-        // 사용자 이메일은 사업자정보 있어야 가져올 수 있음 . . 삭제 예정
-
-//        Long kakaoId = kakaoUser.get("id").asLong();
-//        String nickname = kakaoUser.get("properties").get("nickname").asText();
-//        String email = kakaoUser.path("kakao_account").path("email").asText("");
-//        String profileImg = kakaoUser.path("properties").path("profile_image").asText("");
 
         Long kakaoId = kakaoUser.path("id").asLong();
         String nickname = kakaoUser.path("properties").path("nickname").asText("사용자");
-        String email = kakaoUser.path("kakao_account").path("email").asText(""); // null-safe
         String profileImg = kakaoUser.path("properties").path("profile_image").asText("");
 
         // 3. DB에 사용자 없으면 저장
@@ -58,7 +51,6 @@ public class KakaoLoginService {
             User newUser = User.builder()
                     .kakaoId(kakaoId)
                     .nickname(nickname)
-                    .email(email)
                     .profileImg(profileImg)
                     .createdAt(LocalDateTime.now())
                     .build();

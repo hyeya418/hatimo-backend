@@ -43,7 +43,6 @@ class HelloControllerTest {
     void 유효성_검증에_실패하면_정해진_에러형식으로_응답된다() throws Exception {
         String requestBody = """
                     {
-                        "email": "invalid-email",
                         "password": ""
                     }
                 """;

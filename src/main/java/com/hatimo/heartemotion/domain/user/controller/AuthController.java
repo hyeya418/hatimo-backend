@@ -29,9 +29,11 @@ public class AuthController {
             String token = jwtProvider.createToken(user.getId());
 
             // 3. 쿠키로 토큰 전달 (HttpOnly)
+            //HTTPS 배포 환경에서는 꼭 추가 >> secure=true
             response.setHeader("Set-Cookie",
-                    "token=" + URLEncoder.encode(token, StandardCharsets.UTF_8)
+                    "access_token=" + URLEncoder.encode(token, StandardCharsets.UTF_8)
                             + "; HttpOnly; Path=/; Max-Age=3600; SameSite=Lax");
+
 
             // 4. 프론트 리디렉션
             // response.sendRedirect("http://localhost:3000/"); // 프론트 홈 등으로 이동
