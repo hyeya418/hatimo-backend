@@ -16,10 +16,18 @@ public class EmotionController {
 
     private final EmotionService emotionService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ApiResponse<Emotion> createEmotion(@Valid @RequestBody EmotionRequestDto request, Authentication authentication) {
         Long userId = (Long) authentication.getPrincipal();
         Emotion saved = emotionService.saveEmotion(userId, request);
         return ApiResponse.successSingle(saved);
     }
+
+    @PostMapping("/{emotionId}/response")
+    public ApiResponse<String> getEmotionResponse(@PathVariable Long emotionId, Authentication authentication) {
+        Long userId = (Long) authentication.getPrincipal();
+        String aiResponse = emotionService.getEmotionResponse(userId, emotionId);
+        return ApiResponse.successSingle(aiResponse);
+    }
+
 }
