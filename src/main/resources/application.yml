@@ -16,9 +16,9 @@ spring:
       password: test1234
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: hatimo123!@#
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -27,5 +27,5 @@ spring:
     show-sql: true
 
 kakao:
-  rest-api-key: 93a09708c04536411c7185192f781d4d
-  redirect-uri: http://localhost:8090/auth/kakao/callback
+  rest-api-key: ${KAKAO_REST_API_KEY}
+  redirect-uri: ${KAKAO_REDIRECT_URI}
