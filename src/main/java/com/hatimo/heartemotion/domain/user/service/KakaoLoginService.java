@@ -73,6 +73,12 @@ public class KakaoLoginService {
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
         JsonNode jsonNode = objectMapper.readTree(response.body());
+
+        // null 체크 추가
+        if (jsonNode == null || !jsonNode.has("access_token")) {
+            throw new RuntimeException("Failed to get access token from Kakao");
+        }
+
         return jsonNode.get("access_token").asText();
     }
 

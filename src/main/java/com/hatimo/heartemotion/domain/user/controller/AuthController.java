@@ -21,8 +21,8 @@ public class AuthController {
     private final AuthService authService;
 
     @GetMapping("/kakao/callback")
-    public ResponseEntity<String> kakaoCallback(@RequestParam String code, HttpServletResponse response) {
-        return authService.loginWithKakao(code, response);
+    public void kakaoCallback(@RequestParam String code, HttpServletResponse response) {
+        authService.loginWithKakao(code, response);
     }
 
 }

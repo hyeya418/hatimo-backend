@@ -18,4 +18,8 @@ public record ApiResponse<T>(
     public static <T> ApiResponse<T> empty() {
         return new ApiResponse<>("SUCCESS", "요청이 성공적으로 처리되었습니다.", List.of());
     }
+
+    public static <T> ApiResponse<T> successList(List<T> data) {
+        return new ApiResponse<>("SUCCESS", "요청이 성공적으로 처리되었습니다.", data);
+    }
 }
