@@ -25,5 +25,6 @@ public class Emotion {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 }
