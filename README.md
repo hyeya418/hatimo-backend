@@ -15,16 +15,16 @@
 | 프레임워크       | Spring Boot 3.4.4              |
 | 빌드 도구        | Gradle                          |
 | 데이터베이스     | PostgreSQL 17.4                  |
-| API 연동         | OpenAI GPT (gpt-3.5-turbo 예정) |
+| API 연동         | OpenAI GPT (GPT-4o mini 예정) |
 
 ---
 
 ## 🧱 주요 기능 (예정 포함)
 
 - [x] `/hello` Hello World 테스트
-- [ ] 카카오 로그인 연동, Spring Security, JWT
-- [ ] TDD 적용
-- [ ] 감정 기록 API
+- [x] 카카오 로그인 연동, Spring Security, JWT
+- [x] TDD 적용
+- [x] 감정 기록 API
 - [ ] GPT 기반 감정 위로 메시지 제공 API
 - [ ] 감정 히스토리 조회
 - [ ] 푸시 알림 연동 (FCM or Expo)
