@@ -29,3 +29,6 @@ spring:
 kakao:
   rest-api-key: ${KAKAO_REST_API_KEY}
   redirect-uri: ${KAKAO_REDIRECT_URI}
+
+openai:
+  api-key: ${OPENAI_API_KEY}

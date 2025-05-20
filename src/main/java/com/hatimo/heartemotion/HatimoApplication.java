@@ -20,6 +20,7 @@ public class HatimoApplication {
 		System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
 		System.setProperty("KAKAO_REST_API_KEY", dotenv.get("KAKAO_REST_API_KEY"));
 		System.setProperty("KAKAO_REDIRECT_URI", dotenv.get("KAKAO_REDIRECT_URI"));
+		System.setProperty("OPENAI_API_KEY", dotenv.get("OPENAI_API_KEY"));
 
 		SpringApplication.run(HatimoApplication.class, args);
 	}
