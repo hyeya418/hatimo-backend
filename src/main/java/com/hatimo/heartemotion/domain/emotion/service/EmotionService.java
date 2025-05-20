@@ -1,6 +1,6 @@
 package com.hatimo.heartemotion.domain.emotion.service;
 
-import com.hatimo.heartemotion.domain.emotion.dto.EmotionCodeResponseDto;
+import com.hatimo.heartemotion.domain.emotion.dto.EmotionCodeDto;
 import com.hatimo.heartemotion.domain.emotion.dto.EmotionRequestDto;
 import com.hatimo.heartemotion.domain.emotion.model.Emotion;
 import com.hatimo.heartemotion.domain.emotion.model.EmotionResponse;
@@ -10,6 +10,7 @@ import com.hatimo.heartemotion.domain.emotion.repository.EmotionResponseReposito
 import com.hatimo.heartemotion.global.exception.CustomException;
 import com.hatimo.heartemotion.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class EmotionService {
     private final EmotionCodeRepository emotionCodeRepository;
     private final OpenAiService openAiService;
 
-    public Emotion saveEmotion(Long userId, EmotionRequestDto request) {
+    public Emotion saveEmotion(Long userId, @NotNull EmotionRequestDto request) {
         Emotion emotion = Emotion.builder()
                 .userId(userId)
                 .emotionCode(request.getEmotionCode())
@@ -49,14 +50,16 @@ public class EmotionService {
         return gptResponse;
     }
 
-    public List<EmotionCodeResponseDto> getEmotionCodes() {
-        return emotionCodeRepository.findAll().stream()
-                .map(code -> EmotionCodeResponseDto.builder()
+    public List<EmotionCodeDto> getEmotionCodes() {
+        return emotionCodeRepository.findAllByOrderByOrderNumberAsc().stream()
+                .map(code -> EmotionCodeDto.builder()
                         .code(code.getCode())
                         .label(code.getLabel())
                         .color(code.getColor())
+                        .orderNumber(code.getOrderNumber())
                         .build())
                 .collect(Collectors.toList());
     }
+
 
 }

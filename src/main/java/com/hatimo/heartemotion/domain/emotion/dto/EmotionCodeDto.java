@@ -7,9 +7,10 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class EmotionCodeResponseDto {
+public class EmotionCodeDto {
 
     private String code;
     private String label;
     private String color;
+    private Integer orderNumber;
 }

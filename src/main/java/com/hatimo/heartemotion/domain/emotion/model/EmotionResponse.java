@@ -25,5 +25,6 @@ public class EmotionResponse {
     private String response;
 
     @Column(name = "created_at")
+    @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 }

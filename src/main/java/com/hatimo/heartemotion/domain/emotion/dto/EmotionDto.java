@@ -1,18 +1,18 @@
 package com.hatimo.heartemotion.domain.emotion.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class EmotionRequestDto {
+public class EmotionDto {
 
-    @NotBlank
+    private Long id;
     private String emotionCode;
     private String content;
+    private LocalDateTime createdAt;
 }
