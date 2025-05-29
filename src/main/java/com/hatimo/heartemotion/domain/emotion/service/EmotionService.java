@@ -1,5 +1,6 @@
 package com.hatimo.heartemotion.domain.emotion.service;
 
+import com.hatimo.heartemotion.domain.emotion.dto.EmotionCalendarEntryDto;
 import com.hatimo.heartemotion.domain.emotion.dto.EmotionCodeDto;
 import com.hatimo.heartemotion.domain.emotion.dto.EmotionRequestDto;
 import com.hatimo.heartemotion.domain.emotion.model.Emotion;
@@ -14,7 +15,11 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Service
 @RequiredArgsConstructor
@@ -61,5 +66,40 @@ public class EmotionService {
                 .collect(Collectors.toList());
     }
 
+    public Emotion getEmotionByIdAndUserId(Long emotionId, Long userId) {
+        return emotionRepository.findByIdAndUserId(emotionId, userId)
+                .orElseThrow(() -> new CustomException(ErrorCode.EMOTION_NOT_FOUND));
+    }
+
+    public String getGptResponseByEmotionId(Long emotionId) {
+        EmotionResponse response = emotionResponseRepository.findByEmotionId(emotionId)
+                .orElseThrow(() -> new CustomException(ErrorCode.EMOTION_RESPONSE_NOT_FOUND));
+        return response.getResponse();
+    }
+
+    public Optional<Emotion> getEmotionByDate(Long userId, LocalDate date) {
+        LocalDateTime start = date.atStartOfDay();
+        LocalDateTime end = date.atTime(LocalTime.MAX);
+        return emotionRepository.findOneByUserIdAndCreatedAtBetween(userId, start, end);
+    }
+
+
+    public List<EmotionCalendarEntryDto> getEmotionCalendarEntries(Long userId, int year, int month) {
+        LocalDate start = LocalDate.of(year, month, 1);
+        LocalDate end = start.withDayOfMonth(start.lengthOfMonth());
+
+        List<Emotion> emotions = emotionRepository.findByUserIdAndCreatedAtBetween(
+                userId,
+                start.atStartOfDay(),
+                end.atTime(LocalTime.MAX)
+        );
+
+        return emotions.stream()
+                .map(e -> EmotionCalendarEntryDto.builder()
+                        .date(e.getCreatedAt().toLocalDate().toString())
+                        .emotionCode(e.getEmotionCode())
+                        .build())
+                .collect(Collectors.toList());
+    }
 
 }

@@ -20,8 +20,9 @@ public enum ErrorCode {
     EMOTION_NOT_FOUND("EMOTION_NOT_FOUND", HttpStatus.NOT_FOUND, "감정 기록을 찾을 수 없습니다."),
     EMOTION_SAVE_FAILED("EMOTION_SAVE_FAILED", HttpStatus.INTERNAL_SERVER_ERROR, "감정 기록 저장에 실패했습니다."),
 
-    // ✅ 위로(GPT)
-    COMFORT_FAILED("COMFORT_FAILED", HttpStatus.INTERNAL_SERVER_ERROR, "GPT 위로 처리 중 오류가 발생했습니다."),
+    // ✅ 위로
+    COMFORT_FAILED("COMFORT_FAILED", HttpStatus.INTERNAL_SERVER_ERROR, "GPT 응답 처리 중 오류가 발생했습니다."),
+    EMOTION_RESPONSE_NOT_FOUND("EMOTION_RESPONSE_NOT_FOUND", HttpStatus.NOT_FOUND, "GPT 응답을 찾을 수 없습니다."),
 
     // ✅ 인증/토큰
     TOKEN_EXPIRED("TOKEN_EXPIRED", HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다."),
