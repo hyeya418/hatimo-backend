@@ -15,4 +15,5 @@ public class EmotionDto {
     private String emotionCode;
     private String content;
     private LocalDateTime createdAt;
+    private String color;
 }

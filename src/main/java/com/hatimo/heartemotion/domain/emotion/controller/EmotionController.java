@@ -57,14 +57,15 @@ public class EmotionController {
         Long userId = (Long) authentication.getPrincipal();
 
         Emotion emotion = emotionService.getEmotionByIdAndUserId(emotionId, userId);
-
         String gptResponse = emotionService.getGptResponseByEmotionId(emotionId);
+        String color = emotionService.getColorByEmotionCode(emotion.getEmotionCode());
 
         EmotionDto emotionDto = EmotionDto.builder()
                 .id(emotion.getId())
                 .emotionCode(emotion.getEmotionCode())
                 .content(emotion.getContent())
                 .createdAt(emotion.getCreatedAt())
+                .color(color)
                 .build();
 
         EmotionRecordResponseDto result = EmotionRecordResponseDto.builder()

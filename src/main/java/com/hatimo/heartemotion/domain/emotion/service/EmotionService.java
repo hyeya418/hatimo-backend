@@ -4,6 +4,7 @@ import com.hatimo.heartemotion.domain.emotion.dto.EmotionCalendarEntryDto;
 import com.hatimo.heartemotion.domain.emotion.dto.EmotionCodeDto;
 import com.hatimo.heartemotion.domain.emotion.dto.EmotionRequestDto;
 import com.hatimo.heartemotion.domain.emotion.model.Emotion;
+import com.hatimo.heartemotion.domain.emotion.model.EmotionCode;
 import com.hatimo.heartemotion.domain.emotion.model.EmotionResponse;
 import com.hatimo.heartemotion.domain.emotion.repository.EmotionCodeRepository;
 import com.hatimo.heartemotion.domain.emotion.repository.EmotionRepository;
@@ -102,4 +103,9 @@ public class EmotionService {
                 .collect(Collectors.toList());
     }
 
+    public String getColorByEmotionCode(String emotionCode) {
+        return emotionCodeRepository.findById(emotionCode)
+                .map(EmotionCode::getColor)
+                .orElse("gray");
+    }
 }
