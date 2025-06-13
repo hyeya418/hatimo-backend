@@ -8,11 +8,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HatimoApplication {
 
 	public static void main(String[] args) {
-		// .env 파일 로딩
+		// 1) JVM 옵션으로 받은 .env 디렉터리/파일명 가져오기 (없으면 기본)
+		String dotenvDir  = System.getProperty("dotenv.dir",  "./");
+		String dotenvFile = System.getProperty("dotenv.file", ".env");
+
+		// 2) dotenv 로드
 		Dotenv dotenv = Dotenv.configure()
-				.directory("./") // 루트 경로
+				.directory(dotenvDir)        // JVM 프로퍼티 반영
+				.filename(dotenvFile)
 				.ignoreIfMalformed()
-				.ignoreIfMissing()
 				.load();
 
 		System.setProperty("DB_URL", dotenv.get("DB_URL"));
