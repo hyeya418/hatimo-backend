@@ -28,11 +28,12 @@ public class AuthService {
                     .httpOnly(true)
                     .path("/")
                     .maxAge(3600)
-                    .sameSite("Lax")
+                    .sameSite("None")
                     .build();
 
             response.addHeader("Set-Cookie", cookie.toString());
 
+            // 프론트엔드 서버주소 변경 필요
             response.sendRedirect("http://localhost:3000/main");
 
             return ResponseEntity.ok("✅ 로그인 성공! 안녕하세요, " + user.getNickname() + " 님 :)");

@@ -31,8 +31,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/api/v1/hello/**").permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().permitAll()
+//                                .requestMatchers("/auth/**", "/api/v1/hello/**").permitAll()
+//                                .anyRequest().authenticated()
+
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
                 .build();
@@ -42,7 +44,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // 프론트엔드 주소 변경 필요
+//        config.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // 프론트엔드 서버주소 변경 필요
         config.setAllowedOriginPatterns(Arrays.asList("*"));  // 개발: 모든 origin 허용
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));
