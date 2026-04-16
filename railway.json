@@ -2,11 +2,15 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "./gradlew clean bootJar -x test"
+    "buildCommand": "./gradlew clean bootJar -x test",
+    "nixpacksPlan": {
+      "variables": {
+        "NIXPACKS_JDK_VERSION": "17"
+      }
+    }
   },
   "deploy": {
     "startCommand": "java -jar build/libs/hatimo-backend-0.0.1-SNAPSHOT.jar",
-    "healthcheckPath": "/actuator/health",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 3
   }
